@@ -1,5 +1,9 @@
 language: rust
 
+before_script:
+  - rustup component add rustfmt-preview
+  - cargo fmt --all -- --check
+
 matrix:
   include:
     - rust: stable
