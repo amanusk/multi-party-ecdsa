@@ -1,21 +1,11 @@
 language: rust
 cache: false
 
-matrix:
-  include:
-    rust:
-      - stable
-      - beta
-      - nightly
+rust:
+  - stable
+  - beta
+  - nightly
 
-stages:
-  - build
-  - name: test
-    if: rust = nightly
-
-before_script:
-  - rustup component add rustfmt-preview
-  - cargo fmt --all -- --check
 
 jobs:
   include:
