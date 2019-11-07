@@ -8,15 +8,23 @@ before_script:
 
 matrix:
   include:
-    - rust: stable
-      script:
-        - cargo build
+    os:
+      - linux:
+        - rust: stable
+          script:
+            - cargo build
 
-    - rust: beta
-      script:
-        - cargo build
+        - rust: beta
+          script:
+            - cargo build
 
-    - rust: nightly
-      script:
-        - cargo build
-        - cargo test
+        - rust: nightly
+          script:
+            - cargo build
+            - cargo test
+
+      - osx:
+        - rust: nightly
+          script:
+            - cargo build
+            - cargo test
