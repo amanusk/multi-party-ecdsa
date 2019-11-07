@@ -1,10 +1,12 @@
 language: rust
 cache: false
 
-rust:
-  - stable
-  - beta
-  - nightly
+matrix:
+  include:
+    rust:
+      - stable
+      - beta
+      - nightly
 
 stages:
   - build
