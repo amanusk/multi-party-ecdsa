@@ -6,6 +6,10 @@ rust:
   - beta
   - nightly
 
+stages:
+  - build
+  - test
+
 
 jobs:
   include:
