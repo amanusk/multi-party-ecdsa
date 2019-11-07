@@ -1,14 +1,16 @@
+language: rust
+
 matrix:
   include:
-    - language: rust
-      rust:
-        - stable
+     - rust: stable
       script:
         - cargo build
 
-    - language: rust
-      rust:
-        - nightly
+     - rust: beta
+      script:
+        - cargo build
+
+    - rust: nightly
       script:
         - cargo build
         - cargo test
