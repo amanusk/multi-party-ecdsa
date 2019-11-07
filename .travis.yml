@@ -1,19 +1,14 @@
-language: rust
-cache: false
-
-rust:
-  - stable
-  - beta
-  - nightly
-
-stages:
-  - build
-  - test
-
-
-jobs:
+matrix:
   include:
-    - stage: build
-      script: cargo build --verbose
-    - stage: test
-      script: cargo test --verbose
+    - language: rust
+      rust:
+        - stable
+      script:
+        - cargo build
+
+    - language: rust
+      rust:
+        - nightly
+      script:
+        - cargo build
+        - cargo test
