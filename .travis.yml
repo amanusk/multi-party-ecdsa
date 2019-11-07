@@ -1,27 +1,23 @@
 language: rust
 cache: false
 
+rust:
+  - stable
+  - beta
+  - nightly
+
+stages:
+  - build
+  - name: test
+    if: rust = nightly
 
 before_script:
   - rustup component add rustfmt-preview
   - cargo fmt --all -- --check
 
-matrix:
-  - language: rust
-    rust: stable
-
-    script:
-      - cargo build --verbose
-
-  - language: rust
-    rust: beta
-
-    script:
-      - cargo build --verbose
-
-  - language: rust
-    rust: nightly
-
-    script:
-      - cargo build --verbose
-      - cargo test --verbose
+jobs:
+  include:
+    - stage: build
+      script: cargo build --verbose
+    - stage: test
+      script: cargo test --verbose
