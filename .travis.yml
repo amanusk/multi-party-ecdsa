@@ -2,12 +2,25 @@ language: rust
 cache: false
 
 
+before_script:
+  - rustup component add rustfmt-preview
+  - cargo fmt --all -- --check
+
 jobs:
   - language: rust
     rust: stable
-    before_script:
-     - rustup component add rustfmt-preview
-      - cargo fmt --all -- --check
+
+    script:
+      - cargo build --verbose
+
+  - language: rust
+    rust: beta
+
+    script:
+      - cargo build --verbose
+
+  - language: rust
+    rust: nightly
 
     script:
       - cargo build --verbose
