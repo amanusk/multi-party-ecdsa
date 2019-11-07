@@ -6,3 +6,12 @@ matrix:
       script:
         - cargo build
 
+    - rust: beta
+      script:
+        - cargo build
+
+    - rust: nightly
+      script:
+        - cargo build
+        - cargo test
+
